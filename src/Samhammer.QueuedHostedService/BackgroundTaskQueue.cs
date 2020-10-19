@@ -3,9 +3,8 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BackgroundTasksSample.Services
+namespace Samhammer.QueuedHostedService
 {
-    #region snippet1
     public interface IBackgroundTaskQueue
     {
         void QueueBackgroundWorkItem(Func<CancellationToken, Task> workItem);
@@ -41,5 +40,4 @@ namespace BackgroundTasksSample.Services
             return workItem;
         }
     }
-    #endregion
 }

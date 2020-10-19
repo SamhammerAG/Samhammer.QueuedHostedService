@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace BackgroundTasksSample.Services
+namespace Samhammer.QueuedHostedService
 {
-    #region snippet1
     public class QueuedHostedService : BackgroundService
     {
         private readonly ILogger<QueuedHostedService> _logger;
@@ -56,5 +55,4 @@ namespace BackgroundTasksSample.Services
             await base.StopAsync(stoppingToken);
         }
     }
-    #endregion
 }

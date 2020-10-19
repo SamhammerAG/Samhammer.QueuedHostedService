@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "Samhammer.QueuedHostedService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
