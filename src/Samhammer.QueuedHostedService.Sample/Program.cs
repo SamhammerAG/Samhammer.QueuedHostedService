@@ -15,8 +15,7 @@ namespace BackgroundTasksSample
                 {
                     #region snippet3
                     services.AddSingleton<MonitorLoop>();
-                    services.AddHostedService<QueuedHostedService>();
-                    services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
+                    services.AddBackgroundQueue();
                     #endregion
 
                     #region snippet1

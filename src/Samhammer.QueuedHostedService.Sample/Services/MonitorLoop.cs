@@ -66,7 +66,9 @@ namespace BackgroundTasksSample.Services
 
                             _logger.LogInformation(
                                 "Queued Background Task {Guid} is running. " +
-                                "{DelayLoop}/3", guid, delayLoop);
+                                "{DelayLoop}/3\n" +
+                                "\nTap W to add a work item to the " +
+                                "background queue.\n", guid, delayLoop);
                         }
 
                         if (delayLoop == 3)

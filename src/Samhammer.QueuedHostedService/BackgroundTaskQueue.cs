@@ -9,6 +9,8 @@ namespace Samhammer.QueuedHostedService
     {
         private ConcurrentQueue<Func<CancellationToken, Task>> WorkItems { get; }
 
+        public int ItemCount => WorkItems.Count;
+
         private SemaphoreSlim Signal { get; }
 
         public BackgroundTaskQueue()
@@ -39,6 +41,8 @@ namespace Samhammer.QueuedHostedService
 
     public interface IBackgroundTaskQueue
     {
+        int ItemCount { get; }
+
         void QueueBackgroundWorkItem(Func<CancellationToken, Task> workItem);
 
         Task<Func<CancellationToken, Task>> DequeueAsync(CancellationToken cancellationToken);

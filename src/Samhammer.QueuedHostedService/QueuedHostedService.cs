@@ -20,11 +20,6 @@ namespace Samhammer.QueuedHostedService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            Logger.LogInformation(
-                "Queued Hosted Service is running.\n" +
-                "\nTap W to add a work item to the " +
-                "background queue.\n");
-
             await BackgroundProcessing(stoppingToken);
         }
 
@@ -36,6 +31,7 @@ namespace Samhammer.QueuedHostedService
 
                 try
                 {
+                    Logger.LogDebug("Start executing {WorkItem}.", nameof(workItem));
                     await workItem(stoppingToken);
                 }
                 catch (Exception ex)
