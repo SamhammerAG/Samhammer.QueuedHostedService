@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BackgroundTasksSample.Services;
+using Samhammer.QueuedHostedService;
 
 namespace BackgroundTasksSample
 {

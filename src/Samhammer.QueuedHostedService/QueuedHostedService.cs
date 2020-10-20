@@ -8,23 +8,22 @@ namespace Samhammer.QueuedHostedService
 {
     public class QueuedHostedService : BackgroundService
     {
-        private readonly ILogger<QueuedHostedService> _logger;
-
-        public QueuedHostedService(IBackgroundTaskQueue taskQueue, 
-            ILogger<QueuedHostedService> logger)
-        {
-            TaskQueue = taskQueue;
-            _logger = logger;
-        }
+        private ILogger<QueuedHostedService> Logger { get; }
 
         public IBackgroundTaskQueue TaskQueue { get; }
 
+        public QueuedHostedService(IBackgroundTaskQueue taskQueue, ILogger<QueuedHostedService> logger)
+        {
+            TaskQueue = taskQueue;
+            Logger = logger;
+        }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation(
-                $"Queued Hosted Service is running.{Environment.NewLine}" +
-                $"{Environment.NewLine}Tap W to add a work item to the " +
-                $"background queue.{Environment.NewLine}");
+            Logger.LogInformation(
+                "Queued Hosted Service is running.\n" +
+                "\nTap W to add a work item to the " +
+                "background queue.\n");
 
             await BackgroundProcessing(stoppingToken);
         }
@@ -33,8 +32,7 @@ namespace Samhammer.QueuedHostedService
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var workItem = 
-                    await TaskQueue.DequeueAsync(stoppingToken);
+                var workItem = await TaskQueue.DequeueAsync(stoppingToken);
 
                 try
                 {
@@ -42,15 +40,14 @@ namespace Samhammer.QueuedHostedService
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, 
-                        "Error occurred executing {WorkItem}.", nameof(workItem));
+                    Logger.LogError(ex, "Error occurred executing {WorkItem}.", nameof(workItem));
                 }
             }
         }
 
         public override async Task StopAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation("Queued Hosted Service is stopping.");
+            Logger.LogInformation("Queued Hosted Service is stopping.");
 
             await base.StopAsync(stoppingToken);
         }
