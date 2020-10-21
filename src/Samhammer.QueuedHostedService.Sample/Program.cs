@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using BackgroundTasksSample.Services;
-using Samhammer.QueuedHostedService;
+using Microsoft.Extensions.Logging;
 
-namespace BackgroundTasksSample
+namespace Samhammer.QueuedHostedService.Sample
 {
     public class Program
     {
@@ -13,28 +12,32 @@ namespace BackgroundTasksSample
             using var host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    #region snippet3
-                    services.AddSingleton<MonitorLoop>();
                     services.AddBackgroundQueue();
-                    #endregion
-
-                    #region snippet1
-                    services.AddHostedService<TimedHostedService>();
-                    #endregion
-
-                    #region snippet2
-                    services.AddHostedService<ConsumeScopedServiceHostedService>();
-                    services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
-                    #endregion
                 })
                 .Build();
 
             await host.StartAsync();
 
-            #region snippet4
-            var monitorLoop = host.Services.GetRequiredService<MonitorLoop>();
-            monitorLoop.StartMonitorLoop();
-            #endregion
+            var backgroundQueue = host.Services.GetRequiredService<IBackgroundTaskQueue>();
+            var logger = host.Services.GetRequiredService<ILogger<Program>>();
+            
+            backgroundQueue.Enqueue(token =>
+            {
+                logger.LogInformation("Task 1 executed.");
+                return Task.CompletedTask;
+            });
+
+            backgroundQueue.Enqueue(token =>
+            {
+                logger.LogInformation("Task 2 executed.");
+                return Task.CompletedTask;
+            });
+
+            backgroundQueue.Enqueue(token =>
+            {
+                logger.LogInformation("Task 3 executed.");
+                return Task.CompletedTask;
+            });
 
             await host.WaitForShutdownAsync();
         }
