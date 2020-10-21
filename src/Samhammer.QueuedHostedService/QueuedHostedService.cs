@@ -41,6 +41,13 @@ namespace Samhammer.QueuedHostedService
             }
         }
 
+        public override async Task StartAsync(CancellationToken stoppingToken)
+        {
+            Logger.LogInformation("Queued Hosted Service is starting.");
+
+            await base.StartAsync(stoppingToken);
+        }
+
         public override async Task StopAsync(CancellationToken stoppingToken)
         {
             Logger.LogInformation("Queued Hosted Service is stopping.");
