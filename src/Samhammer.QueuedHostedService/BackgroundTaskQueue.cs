@@ -19,7 +19,7 @@ namespace Samhammer.QueuedHostedService
             Signal = new SemaphoreSlim(0);
         }
 
-        public void QueueBackgroundWorkItem(Func<CancellationToken, Task> workItem)
+        public void Enqueue(Func<CancellationToken, Task> workItem)
         {
             if (workItem == null)
             {
@@ -43,7 +43,7 @@ namespace Samhammer.QueuedHostedService
     {
         int ItemCount { get; }
 
-        void QueueBackgroundWorkItem(Func<CancellationToken, Task> workItem);
+        void Enqueue(Func<CancellationToken, Task> workItem);
 
         Task<Func<CancellationToken, Task>> DequeueAsync(CancellationToken cancellationToken);
     }

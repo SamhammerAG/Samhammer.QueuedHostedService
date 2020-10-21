@@ -2,7 +2,7 @@
 
 namespace Samhammer.QueuedHostedService
 {
-    public static class Extensions
+    public static class ServiceCollectionExtensions
     {
         public static void AddBackgroundQueue(this IServiceCollection services)
         {

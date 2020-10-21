@@ -40,7 +40,7 @@ namespace BackgroundTasksSample.Services
                 if (keyStroke.Key == ConsoleKey.W)
                 {
                     // Enqueue a background work item
-                    _taskQueue.QueueBackgroundWorkItem(async token =>
+                    _taskQueue.Enqueue(async token =>
                     {
                         // Simulate three 5-second tasks to complete
                         // for each enqueued work item
