@@ -31,12 +31,12 @@ namespace Samhammer.QueuedHostedService
 
                 try
                 {
-                    Logger.LogDebug("Start executing {WorkItem}.", nameof(workItem));
+                    Logger.LogDebug("Start executing queued background task.");
                     await workItem(stoppingToken);
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogError(ex, "Error occurred executing {WorkItem}.", nameof(workItem));
+                    Logger.LogError(ex, "Error occurred executing queued background task.");
                 }
             }
         }
