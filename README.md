@@ -24,9 +24,9 @@ Add tasks to the queue:
 ```csharp
 public class SampleService
 {
-    private IBackgroundQueue BackgroundQueue { get; }
+    private IBackgroundTaskQueue BackgroundQueue { get; }
 	
-    public SampleService(IBackgroundQueue backgroundQueue)
+    public SampleService(IBackgroundTaskQueue backgroundQueue)
     {
         BackgroundQueue = backgroundQueue;
     }
