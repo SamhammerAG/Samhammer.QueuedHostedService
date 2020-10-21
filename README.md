@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/SamhammerAG/Samhammer.QueuedHostedService.svg?branch=master)](https://travis-ci.com/SamhammerAG/Samhammer.QueuedHostedService)
+
 ## Samhammer.QueuedHostedService
 
 This package provides a hosted queue service to execute background tasks in order.
@@ -22,9 +24,9 @@ Add tasks to the queue:
 ```csharp
 public class SampleService
 {
-    private BackgroundQueue BackgroundQueue { get; }
+    private IBackgroundQueue BackgroundQueue { get; }
 	
-    public SampleService(BackgroundQueue backgroundQueue)
+    public SampleService(IBackgroundQueue backgroundQueue)
     {
         BackgroundQueue = backgroundQueue;
     }
