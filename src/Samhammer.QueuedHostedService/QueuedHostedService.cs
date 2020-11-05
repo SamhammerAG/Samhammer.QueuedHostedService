@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
@@ -43,14 +43,14 @@ namespace Samhammer.QueuedHostedService
 
         public override async Task StartAsync(CancellationToken stoppingToken)
         {
-            Logger.LogInformation("Queued Hosted Service is starting.");
+            Logger.LogDebug("Queued Hosted Service is starting.");
 
             await base.StartAsync(stoppingToken);
         }
 
         public override async Task StopAsync(CancellationToken stoppingToken)
         {
-            Logger.LogInformation("Queued Hosted Service is stopping.");
+            Logger.LogDebug("Queued Hosted Service is stopping.");
 
             await base.StopAsync(stoppingToken);
         }
