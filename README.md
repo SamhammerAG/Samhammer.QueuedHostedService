@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/SamhammerAG/Samhammer.QueuedHostedService.svg?branch=master)](https://travis-ci.com/SamhammerAG/Samhammer.QueuedHostedService)
-
 ## Samhammer.QueuedHostedService
 
 This package provides a hosted queue service to execute background tasks in order.
