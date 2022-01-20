@@ -9,7 +9,7 @@
     <Company>Samhammer AG</Company>
     <Authors>Samhammer AG</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Description>Logic for starting a background job</Description>
+    <Description>hostedservice to execute background tasks in order</Description>
   </PropertyGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\stylecop.json" />
