@@ -31,26 +31,26 @@ namespace Samhammer.QueuedHostedService
 
                 try
                 {
-                    Logger.LogDebug("Start executing queued background task.");
+                    Logger.LogDebug("Start executing queued background task");
                     await workItem(stoppingToken);
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogError(ex, "Error occurred executing queued background task.");
+                    Logger.LogError(ex, "Error occurred executing queued background task");
                 }
             }
         }
 
         public override async Task StartAsync(CancellationToken stoppingToken)
         {
-            Logger.LogDebug("Queued Hosted Service is starting.");
+            Logger.LogDebug("Queued Hosted Service is starting");
 
             await base.StartAsync(stoppingToken);
         }
 
         public override async Task StopAsync(CancellationToken stoppingToken)
         {
-            Logger.LogDebug("Queued Hosted Service is stopping.");
+            Logger.LogDebug("Queued Hosted Service is stopping");
 
             await base.StopAsync(stoppingToken);
         }
