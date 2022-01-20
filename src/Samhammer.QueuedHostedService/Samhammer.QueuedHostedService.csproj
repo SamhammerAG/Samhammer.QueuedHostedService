@@ -2,7 +2,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <CodeAnalysisRuleSet>..\stylecop.ruleset</CodeAnalysisRuleSet>
-    <OutputType>Library</OutputType>
     <PackageProjectUrl>https://github.com/SamhammerAG/Samhammer.QueuedHostedService</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SamhammerAG/Samhammer.QueuedHostedService</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
